@@ -5,11 +5,11 @@ class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
       headers: {"Content-Type": "application/json"},
-      validateStatus: (status) => true, // important for debugging
+      validateStatus: (status) => true,
     ),
   );
 
-  Future<String?> postApiData(String query) async {
+  Future<String?> GetData(String query) async {
     try {
       final response = await _dio.post(
         Constant.base_url,
@@ -35,18 +35,17 @@ class ApiService {
             data['candidates'].isNotEmpty) {
           return data['candidates'][0]['content']['parts'][0]['text'];
         } else {
-          print("No candidates found");
+          return "No candidates found";
         }
       } else {
-        print("HTTP ERROR: ${response.statusCode}");
+        return("HTTP ERROR: ${response.statusCode}");
       }
     } catch (e) {
       if (e is DioException) {
-        print("Dio Error: ${e.response?.data}");
+        return("Dio Error: ${e.response?.data}");
       } else {
-        print("Error: $e");
-      }
+        return("Error: $e");
+      } 
     }
-    return null;
   }
 }

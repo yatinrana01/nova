@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:nova/custom_theme/custom_theme.dart';
 import 'package:nova/features/chat/view/chatscreen.dart';
 import 'package:nova/routes/custom_pages.dart';
 import 'package:nova/routes/custom_routes.dart';
@@ -19,9 +21,8 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBinding(),
       initialRoute: CustomRoutes.chat,
       title: 'N O V A',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
+      theme: CustomTheme.darkTheme,
+      debugShowCheckedModeBanner: false,
     );
   }
 }
