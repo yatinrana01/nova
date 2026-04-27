@@ -5,6 +5,8 @@ import 'package:nova/features/chat/chat_controller.dart/chatController.dart';
 import 'package:nova/components/custom_input_bar.dart';
 
 class ChatScreen extends GetView<ChatController> {
+  const ChatScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,19 +40,22 @@ class ChatScreen extends GetView<ChatController> {
                       return Text('No response from Ai');
                     } else {
                       return SingleChildScrollView(
-                        child: Text('${controller.AiResponse.value}'),
+                        child: Text(controller.AiResponse.value),
                       );
                     }
                   }),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Expanded(child: CustomInputBar()),
-                  SizedBox(width: 10),
-                  CustomSendButton(),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Expanded(child: CustomInputBar()),
+                    SizedBox(width: 10),
+                    CustomSendButton(),
+                  ],
+                ),
               ),
             ],
           ),

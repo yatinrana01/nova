@@ -8,7 +8,8 @@ class CustomInputBar extends GetWidget<ChatController> {
   Widget build(BuildContext context) {
     return TextField(
       controller: controller.inputcontroller,
-
+      keyboardAppearance: Brightness.dark,
+      textInputAction: TextInputAction.send,
       decoration: InputDecoration(
         hintText: 'Enter your text',
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),

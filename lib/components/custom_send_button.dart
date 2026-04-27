@@ -11,6 +11,7 @@ class CustomSendButton extends GetWidget<ChatController> {
         controller.inputcontroller.text.isEmpty
             ? Get.snackbar('message is empty', 'please write a prompt first')
             : controller.getData(controller.inputcontroller.text);
+        controller.inputcontroller.clear();
       },
       icon: Icon(Icons.send),
     );

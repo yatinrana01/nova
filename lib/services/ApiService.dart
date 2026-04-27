@@ -25,8 +25,8 @@ class ApiService {
       );
 
       /// 🔍 DEBUG LOGS
-      print("STATUS: ${response.statusCode}");
-      print("FULL RESPONSE: ${response.data}");
+      // print("STATUS: ${response.statusCode}");
+      // print("FULL RESPONSE: ${response.data}");
 
       if (response.statusCode == 200) {
         final data = response.data;
