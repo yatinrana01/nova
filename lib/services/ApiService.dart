@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:nova/utils/constant.dart';
 
 class ApiService {
@@ -17,35 +18,36 @@ class ApiService {
           "contents": [
             {
               "parts": [
-                {"text": query}
-              ]
-            }
-          ]
+                {"text": query},
+              ],
+            },
+          ],
         },
       );
 
       /// 🔍 DEBUG LOGS
-      // print("STATUS: ${response.statusCode}");
-      // print("FULL RESPONSE: ${response.data}");
+      if (kDebugMode) {
+        print("STATUS: ${response.statusCode}");
+        print("FULL RESPONSE: ${response.data}");
+      }
 
       if (response.statusCode == 200) {
         final data = response.data;
 
-        if (data['candidates'] != null &&
-            data['candidates'].isNotEmpty) {
+        if (data['candidates'] != null && data['candidates'].isNotEmpty) {
           return data['candidates'][0]['content']['parts'][0]['text'];
         } else {
           return "No candidates found";
         }
       } else {
-        return("HTTP ERROR: ${response.statusCode}");
+        return ("HTTP ERROR: ${response.statusCode}");
       }
     } catch (e) {
       if (e is DioException) {
-        return("Dio Error: ${e.response?.data}");
+        return ("Dio Error: ${e.response?.data}");
       } else {
-        return("Error: $e");
-      } 
+        return ("Error: $e");
+      }
     }
   }
 }

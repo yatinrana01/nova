@@ -12,7 +12,7 @@ class CustomInputBar extends GetWidget<ChatController> {
       textInputAction: TextInputAction.send,
       decoration: InputDecoration(
         hintText: 'Enter your text',
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
         contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nova/components/custom_send_button.dart';
@@ -40,7 +41,15 @@ class ChatScreen extends GetView<ChatController> {
                       return Text('No response from Ai');
                     } else {
                       return SingleChildScrollView(
-                        child: Text(controller.AiResponse.value),
+                        child: AnimatedTextKit(
+                          animatedTexts: [
+                            TyperAnimatedText(
+                              controller.AiResponse.value,
+                              speed: Duration(milliseconds: 30),
+                            ),
+                          ],
+                          totalRepeatCount: 1,
+                        ),
                       );
                     }
                   }),
@@ -52,7 +61,22 @@ class ChatScreen extends GetView<ChatController> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(child: CustomInputBar()),
-                    SizedBox(width: 10),
+                    Obx(() {
+                      return controller.AiResponse.value.isEmpty
+                          ? SizedBox(width: 10)
+                          : Row(
+                              children: [
+                                SizedBox(width: 10),
+                                IconButton.outlined(
+                                  onPressed: controller.AiResponse.value.isEmpty
+                                      ? null
+                                      : controller.textToSpeach,
+                                  icon: Icon(Icons.volume_up),
+                                ),
+                                SizedBox(width: 10),
+                              ],
+                            );
+                    }),
                     CustomSendButton(),
                   ],
                 ),
