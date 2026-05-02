@@ -17,12 +17,12 @@ class ChatController extends GetxController {
 
     if (!kIsWeb) {
       tts.setLanguage("en-GB");
-      tts.setSpeechRate(0.8);
+      tts.setSpeechRate(0.5);
       tts.setVolume(1.0);
-      tts.setPitch(1.1);
+      tts.setPitch(1.2);
       await tts.setVoice({
         "name": "en-gb-x-gbb#female_1-local",
-        "locale": "en-GB",
+        "locale": "en-US",
       });
 
       tts.setStartHandler(() {
